@@ -1,1 +1,42 @@
 <app-nav-bar></app-nav-bar>
+<div class="container">
+  <div [ngSwitch]="detail">
+    <div *ngSwitchCase="true">
+      <div [ngSwitch]="component">
+  <div class="container text-center mt-4">
+    <div class="row justify-content-center">
+      <div class="card-body col-4">
+        <div class="card-header bg-dark text-primary" id="card-body">
+          <div>
+            <h5><span>Encriptar palabra</span></h5>
+            <input class="form-control text-center" type="text" >
+            <input class="btn btn-block bg-light text-primary mt-2 text-center" type="submit"  value="Encriptar" >
+          </div>
+          <div class="mt-3">
+            <h5><span>Contraseña Encriptada</span></h5>
+            <input class="form-control text-center" type="text" name="humedad" readonly>
+          </div>
+        </div>
+      </div>
+      <div class="card-body col-8" >
+          <div class="card-header bg-dark text-primary" id="card-body">
+          <h5><span>Historial de Palabras Encriptadas</span></h5>
+          <div>
+            <table class="table">
+              <thead class="ml-2">
+                <tr class="text-light">
+                  <th scope="col">Palabra</th>
+                  <th scope="col">Encriptación</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+      </div>
+    </div>
+  </div>
+</div>
+
