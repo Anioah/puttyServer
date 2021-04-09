@@ -45,7 +45,7 @@ class UserController {
             }
 
             // Ejemplo para hash manual.
-            const safeUser = await Hash.make(request.input('username'));
+            //const safeUser = await Hash.make(request.input('username'));
 
             return await auth.withRefreshToken().attempt(data.email, data.password);
 
@@ -60,11 +60,28 @@ class UserController {
             const user = await auth.getUser();
             // find a token with the user id
             const token = await Token.findBy('user_id', user.id);
+            if (token == null) {
+                return response.status(400).json({ message: "El usuario no contiene una sesión activa" });
+            }
             await token.delete();
             return response.status(200).json({ message: "Sesión finalizada correctamente" });
         } catch (error) {
             return response.status(500).json({ message: "No se realizo la petición exitosamente" });
         }
+    }
+
+    async userInfo({ auth, response }) {
+        try {
+            const user = await auth.getUser();
+
+            if (user == null) {
+                return response.status(400).json({ message: "No existe esa sesión" });
+            }
+            return response.status(200).json(user);
+        } catch (error) {
+            return response.status(500).json({ message: "No se realizo la petición exitosamente" });
+        }
+
     }
 }
 

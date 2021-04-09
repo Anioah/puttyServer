@@ -20,6 +20,7 @@ Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
 })
 
+Route.get('getUser', 'UserController.userInfo');
 Route.post('registro', 'UserController.register');
 Route.post('login', 'UserController.login');
 Route.delete('logout', 'UserController.deleteAuth');
