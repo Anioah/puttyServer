@@ -22,3 +22,4 @@ Route.get('/', () => {
 
 Route.post('registro', 'UserController.register');
 Route.post('login', 'UserController.login');
+Route.delete('logout', 'UserController.deleteAuth');

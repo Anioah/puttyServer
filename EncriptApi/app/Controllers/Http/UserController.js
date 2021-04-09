@@ -41,6 +41,19 @@ class UserController {
             return response.status(500).json({ message: "La solicitud no fue procesada correctamente" });
         }
     }
+
+    async deleteAuth({ response, auth }) {
+        try {
+          // get user information 
+          const user = await auth.getUser();
+          // find a token with the user id
+          const token = await Token.findBy('user_id', user.id);
+          await token.delete();
+          return response.status(200).json({ message: "Sesión finalizada correctamente" });
+        } catch (error) {
+          return response.status(500).json({ message: "No se realizo la petición exitosamente" });
+        }
+      }
 }
 
 module.exports = UserController
