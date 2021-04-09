@@ -47,11 +47,12 @@ class UserController {
             // Ejemplo para hash manual.
             //const safeUser = await Hash.make(request.input('username'));
 
-            return await auth.withRefreshToken().attempt(data.email, data.password);
+
+            //return await auth.withRefreshToken().attempt(data.email, data.password);
 
         } catch (error) {
             return response.status(500).json({ message: "La solicitud no fue procesada correctamente" });
-        }
+      }
     }
 
     async deleteAuth({ response, auth }) {
