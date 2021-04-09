@@ -18,7 +18,7 @@ class UserController {
             const checkUser = await User.query().select('*').where('email', data.email).fetch();
 
             if (checkUser.size() > 0) {
-                return response.status(400).json({ message: "El usuario ya esta registrado, Incie sesión" });
+                return response.status(400).json({ message: "El usuario ya esta registrado, Inicie sesión" });
             }
 
             user.username = data.username;
@@ -37,6 +37,12 @@ class UserController {
     async login({ auth, request, response }) {
         try {
             const data = await request.all();
+
+            const checkUser = await User.query().select('*').where('email', data.email).fetch();
+
+            if (checkUser.size() == 0) {
+                return response.status(400).json({ message: "El usuario no existe, favor de registrarse" });
+            }
 
             // Ejemplo para hash manual.
             const safeUser = await Hash.make(request.input('username'));
