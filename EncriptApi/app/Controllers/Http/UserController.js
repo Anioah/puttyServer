@@ -45,13 +45,9 @@ class UserController {
             }
 
             // Ejemplo para hash manual.
-<<<<<<< HEAD
-           const safeUser = await Hash.make(request.input('username'));
-=======
             //const safeUser = await Hash.make(request.input('username'));
->>>>>>> 2b5bc87ded0b1d9dcb99a5962dbd2f2a79306216
 
-            //return await auth.withRefreshToken().attempt(data.email, data.password);
+            return await auth.withRefreshToken().attempt(data.email, data.password);
 
         } catch (error) {
             return response.status(500).json({ message: "La solicitud no fue procesada correctamente" });
