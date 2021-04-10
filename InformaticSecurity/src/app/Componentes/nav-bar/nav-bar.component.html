@@ -1,6 +1,6 @@
-<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar sticky-top navbar-expand-lg letra" style="background-color: #000;">
   <a class="navbar-brand" routerLink="/lugares">
-    <img width="30" height="30" src="assets/atmospheric.png" alt="Logo">
+    <img width="30" height="30" src="assets/logo3.svg" alt="Logo">
   </a>
   <button class="navbar-toggler collapsed" type="button" (click)="toggleState()">
     <span class="navbar-toggler-icon"></span>
@@ -8,30 +8,19 @@
 
   <div class="navbar-collapse" [ngClass]="{ 'collapse': isCollapse }">
     <ul class="navbar-nav mr-auto">
-      <li routerLinkActive="active" class="nav-item">
-        <a class="nav-link" routerLink="/welcome">Inicio <span class="sr-only">(current)</span></a>
-      </li>
-      <li routerLinkActive="active" class="nav-item">
-        <a class="nav-link" routerLink="/contacto">Contacto</a>
-      </li>
     </ul>
 
     <ul class="nav navbar-nav navbar-right" *ngIf="!loggedIn">
       <li routerLinkActive="active" class="nav-item">
-        <a class="nav-link" routerLink="/login">
-          <i class="fa fa-lock" aria-hidden="true"></i> Login
-        </a>
-      </li>
-      <li routerLinkActive="active" class="nav-item">
-        <a class="nav-link" routerLink="/registro">
-          <i class="fa fa-plus-square-o" aria-hidden="true"></i> Sign up</a>
+        <a class="nav-link letra" routerLink="" (click)="logout()">
+          <i class="fa fa-plus-square-o" aria-hidden="true"></i>Logout</a>
       </li>
     </ul>
 
     <ul class="nav navbar-nav navbar-right" *ngIf="loggedIn">
       <!-- <li *ngIf="loggedUser"><a>{{_autorizacionService.email}}</a></li> -->
       <li *ngIf="loggedUser">
-        <a class="nav-link disabled"><i class="fa fa-user-o" aria-hidden="true"></i>
+        <a class="nav-link disabled letra"><i class="fa fa-user-o" aria-hidden="true"></i>
           {{loggedUser}}
         </a>
       </li>

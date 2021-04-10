@@ -1,12 +1,22 @@
+
 <div class="background text-center">
   <form
     class="form-signin animated fadeIn"
     autocomplete="off"
-    [formGroup]= "loginForm"
-    (ngSubmit)="login()"
+    [formGroup]="registerForm"
+    (ngSubmit) = "register()"
   >
     <img class="mb-4 img" src="assets/logo2.svg" alt="logo" />
-    <h1 class="h3 mb-3 font-weight-normal">Sign in</h1>
+    <h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
+     <label class="sr-only" for="inputPassword2">Username</label>
+    <input
+      type="text"
+      class="form-control mb-3"
+      id="inputText"
+      placeholder="Username"
+      formControlName= "username"
+      [class.is-invalid]="userNameValidate"
+    />
     <label class="sr-only" for="inputEmail">Email Address</label>
     <input
       type="email"
@@ -25,11 +35,11 @@
       formControlName= "password"
       [class.is-invalid]="passwordValidate"
     />
-    <button type="submit" class="btn btn-lg  btn-block mb-2 boton swt"  [disabled]="passwordValidate">
-      Sign in
+   
+    <button type="submit" class="btn btn-lg boton btn-block mb-2" [disabled]="passwordValidate">
+      Sign up
     </button>
-    <a [routerLink]="['/register']">Don't you have an account?</a>
+    <a [routerLink]="['/login']">Do you have an account?</a>
     <p class="mt-4 mb-3 text-muted">© Puty Server - 2021</p>
   </form>
 </div>
- 
